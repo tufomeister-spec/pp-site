@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instagram Profil Fotoğrafı Büyütme ve İndirme</title>
+<meta name="description" content="Instagram profil fotoğrafını tam boyutta gör ve ücretsiz indir. Sadece kullanıcı adını yaz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<!-- Google AdSense kodunu onay aldıktan sonra buraya yapıştır -->
+<style>
+:root{--ink:#1b1b3a;--paper:#f6f5fb;--card:#ffffff;--muted:#5d5d7a;--pink:#e8366b;--amber:#ffb54a;--line:#dedcee;--err:#b3261e}
+@media (prefers-color-scheme:dark){:root{--ink:#f1f0fa;--paper:#14142b;--card:#1d1d3b;--muted:#a3a3c4;--line:#33335a;--err:#ff8a80}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+main{max-width:640px;margin:0 auto;padding:48px 20px 32px}
+h1{font-size:clamp(2rem,6vw,3rem);line-height:1.1;font-weight:800;margin:0 0 12px;letter-spacing:-.02em}
+.lead{color:var(--muted);margin:0 0 32px;max-width:46ch}
+.ring{width:176px;height:176px;border-radius:50%;padding:6px;margin:0 0 28px;background:conic-gradient(from 200deg,var(--pink),var(--amber),var(--pink));display:grid;place-items:center}
+.ring .inner{width:100%;height:100%;border-radius:50%;background:var(--card);overflow:hidden;display:grid;place-items:center;color:var(--muted);font-size:.85rem;text-align:center;padding:12px}
+.ring img{width:100%;height:100%;object-fit:cover;display:block}
+form{display:flex;gap:8px;flex-wrap:wrap}
+.field{flex:1 1 220px;display:flex;align-items:center;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:0 14px}
+.field:focus-within{border-color:var(--pink)}
+.field span{color:var(--muted);font-weight:600}
+input{flex:1;border:0;outline:0;background:transparent;color:var(--ink);font:inherit;font-size:1.05rem;padding:14px 6px;min-width:0}
+button,.btn{font:inherit;font-weight:600;border:0;border-radius:14px;padding:14px 22px;cursor:pointer;background:var(--ink);color:var(--paper);text-decoration:none;display:inline-block}
+button:hover,.btn:hover{opacity:.9}
+button:focus-visible,.btn:focus-visible,input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.btn.primary{background:var(--pink);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+#msg{min-height:1.5em;margin:12px 0 0;color:var(--err);font-weight:600}
+#actions{display:none;gap:8px;flex-wrap:wrap;margin-top:20px}
+#full{display:none;margin-top:28px;max-width:100%;border-radius:16px;border:1px solid var(--line)}
+.ad-slot{margin:36px 0;min-height:90px;border:1px dashed var(--line);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:.8rem}
+section h2{font-size:1.25rem;margin:36px 0 8px}
+section p,section li{color:var(--muted);max-width:62ch}
+details{border-bottom:1px solid var(--line);padding:12px 0}
+summary{cursor:pointer;font-weight:600}
+footer{max-width:640px;margin:0 auto;padding:16px 20px 48px;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:no-preference){.ring.loading{animation:spin 1.2s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Instagram profil fotoğrafını tam boyutta gör</h1>
+  <p class="lead">Kullanıcı adını yaz, fotoğrafı büyüt ve telefonuna ya da bilgisayarına indir.</p>
+
+  <div class="ring" id="ring"><div class="inner" id="inner">Fotoğraf burada görünecek</div></div>
+
+  <form id="form">
+    <label class="field"><span>@</span>
+      <input id="u" name="username" placeholder="kullaniciadi" autocomplete="off" autocapitalize="none" spellcheck="false" aria-label="Instagram kullanıcı adı" required>
+    </label>
+    <button type="submit" id="go">Fotoğrafı getir</button>
+  </form>
+  <p id="msg" role="status"></p>
+
+  <div id="actions">
+    <a class="btn primary" id="dl" href="#">Fotoğrafı indir</a>
+    <a class="btn ghost" id="open" href="#" target="_blank" rel="noopener">Yeni sekmede aç</a>
+  </div>
+  <img id="full" alt="Büyütülmüş profil fotoğrafı">
+
+  <!-- Reklam alanı 1: AdSense reklam kodunu buraya koy -->
+  <div class="ad-slot">Reklam alanı</div>
+
+  <section>
+    <h2>Nasıl kullanılır?</h2>
+    <p>Instagram kullanıcı adını yukarıdaki kutuya yaz ve “Fotoğrafı getir” düğmesine bas. Fotoğraf büyük boyutta açılır, “Fotoğrafı indir” ile cihazına kaydedebilirsin.</p>
+    <h2>Sık sorulan sorular</h2>
+    <details><summary>Gizli hesapların fotoğrafını görebilir miyim?</summary><p>Hayır. Bu araç yalnızca herkese açık profil fotoğraflarını gösterir.</p></details>
+    <details><summary>Kullanıcıya bildirim gider mi?</summary><p>Hayır. Giriş yapman gerekmez ve aradığın hesap bunu bilmez.</p></details>
+    <details><summary>Ücretsiz mi?</summary><p>Evet, tamamen ücretsiz.</p></details>
+    <details><summary>İndirdiğim fotoğrafı istediğim gibi kullanabilir miyim?</summary><p>Fotoğrafın hakları sahibine aittir. İzinsiz paylaşma ve ticari kullanımdan kaçın.</p></details>
+  </section>
+
+  <!-- Reklam alanı 2 -->
+  <div class="ad-slot">Reklam alanı</div>
+</main>
+<footer>Bu site Instagram veya Meta ile bağlantılı değildir. Tüm marka hakları sahiplerine aittir.</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('form'),input=document.getElementById('u'),go=document.getElementById('go'),
+      msg=document.getElementById('msg'),inner=document.getElementById('inner'),ring=document.getElementById('ring'),
+      actions=document.getElementById('actions'),dl=document.getElementById('dl'),openA=document.getElementById('open'),
+      full=document.getElementById('full');
+
+  function reset(){actions.style.display='none';full.style.display='none';msg.textContent=''}
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=input.value.trim().replace(/^@/,'');
+    reset();
+    if(!/^[A-Za-z0-9._]{1,30}$/.test(name)){msg.textContent='Geçerli bir kullanıcı adı yaz (harf, rakam, nokta, alt çizgi).';return}
+    go.disabled=true;go.textContent='Getiriliyor…';ring.classList.add('loading');
+    fetch('/api/profile?username='+encodeURIComponent(name))
+      .then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d}})})
+      .then(function(res){
+        if(!res.ok)throw new Error(res.d.error||'Bir sorun oluştu.');
+        var base='/api/download?name='+encodeURIComponent(name)+'&url='+encodeURIComponent(res.d.url);
+        inner.innerHTML='';var img=new Image();img.alt='@'+name+' profil fotoğrafı';img.src=base+'&inline=1';inner.appendChild(img);
+        full.src=base+'&inline=1';full.style.display='block';
+        dl.href=base;openA.href=base+'&inline=1';actions.style.display='flex';
+      })
+      .catch(function(err){inner.textContent='Fotoğraf burada görünecek';msg.textContent=err.message||'Bir sorun oluştu, tekrar dene.'})
+      .finally(function(){go.disabled=false;go.textContent='Fotoğrafı getir';ring.classList.remove('loading')});
+  });
+})();
+</script>
+</body>
+</html>
